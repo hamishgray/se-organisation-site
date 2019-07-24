@@ -738,8 +738,7 @@ a {
     .main-navigation a {
       text-decoration: none;
       padding: .25em .75em;
-      color: #fff;
-      text-transform: uppercase; } }
+      color: #fff; } }
   .main-navigation .sub-menu .menu-item-has-children > a::after {
     position: absolute;
     content: "";
@@ -2860,5 +2859,17 @@ body.woocommerce-cart .primer-wc-cart-sub-menu {
 
 
 
+/*  Media centre
+-------------------------*/
 
+.display-posts-listing {
+  padding-left: 0;
+}
 
+.valign-middle .wp-block-kadence-column {
+  vertical-align: middle;
+  flex-direction: unset;
+}
+.valign-middle .wp-block-kadence-column .kt-inside-inner-col {
+  align-self: center;
+}
