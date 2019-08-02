@@ -89,11 +89,6 @@
 
 			<?php
 
-			/**
-			 * Fires inside the `<div class="site-header-wrapper">` element.
-			 *
-			 * @since 1.0.0
-			 */
 			do_action( 'primer_after_site_header_wrapper' );
 
 			?>

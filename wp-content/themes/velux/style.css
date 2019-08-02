@@ -251,8 +251,8 @@ textarea,
   font-family: "Roboto", "Helvetica Neue", sans-serif;
   font-weight: normal;
   font-size: 16px;
-  font-size: 1rem;
-  line-height: 1.8; }
+  font-size: 1.1rem;
+  line-height: 1.6;}
   @media only screen and (max-width: 40.063em) {
     body,
     button,
@@ -267,22 +267,22 @@ h1, h2, h3, h4, h5, h6 {
   clear: both;
   margin-top: 0.2rem;
   margin-bottom: 0.8rem;
-  font-weight: bold;
-  line-height: 1.4;
+  font-weight: 900;
+  line-height: 1.2;
   text-rendering: optimizeLegibility;
   color: #222222; }
 
 h1 {
-  font-size: 2.5em; }
+  font-size: 3em; }
 
 h2 {
-  font-size: 2em; }
+  font-size: 2.4em; }
 
 h3 {
-  font-size: 1.5em; }
+  font-size: 1.9em; }
 
 h4 {
-  font-size: 1.25em; }
+  font-size: 1.45em; }
 
 h5 {
   font-size: 1.125em; }
@@ -689,13 +689,13 @@ a {
     margin: 0;
     padding-left: 0; }
     .main-navigation ul.menu > li > a {
-      border-top: 3px solid transparent; }
+      border-bottom: 3px solid transparent; }
     .main-navigation ul.menu > li.current_page_item > a,
     .main-navigation ul.menu > li.current-menu-item > a,
     .main-navigation ul.menu > li.current_page_ancestor > a,
     .main-navigation ul.menu > li.current_page_parent > a,
     .main-navigation ul.menu > li.current-menu-ancestor > a {
-      font-weight: 700; }
+      font-weight: 600; }
     .main-navigation ul a {
       color: white;
       display: block;
@@ -703,8 +703,8 @@ a {
       border-bottom: 2px solid rgba(0, 0, 0, 0.05); }
       @media only screen and (min-width: 40.063em) {
         .main-navigation ul a {
-          padding-top: 2.9em;
-          padding-bottom: 2.9em;
+          padding-top: 1.4em;
+          padding-bottom: 1.4em;
           border-bottom: none; } }
     .main-navigation ul ul {
       z-index: 99999;
@@ -1581,32 +1581,7 @@ body.page-template-page-builder-no-header .content-area {
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
-.site-header.video-header {
-  overflow: hidden;
-  background-color: #000;
-  color: #000; }
-  .site-header.video-header .hero,
-  .site-header.video-header aside.primer-hero-text-widget {
-    position: relative; }
-  .site-header.video-header #wp-custom-header {
-    position: absolute;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto; }
-    .site-header.video-header #wp-custom-header img {
-      display: none; }
-  .site-header.video-header #wp-custom-header-video-button {
-    position: absolute;
-    top: 89vh;
-    right: 1em;
-    opacity: 0.5;
-    padding: 10px 1rem; }
-  .site-header.video-header iframe#wp-custom-header-video {
-    height: 100%;
-    max-width: 100%; }
+
 
 .site-header-wrapper {
   position: relative;
@@ -1614,7 +1589,6 @@ body.page-template-page-builder-no-header .content-area {
   max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
-  border-bottom: 1px solid white;
   padding-bottom: 25px; }
   .site-header-wrapper:after {
     content: " ";
@@ -1669,7 +1643,9 @@ body.custom-header-image .site-description {
   @media only screen and (min-width: 40.063em) {
     .site-title-wrapper {
       padding-top: 0;
-      text-align: left; } }
+      text-align: left; }
+    .site-title-wrapper img { display: block; }
+  }
 
 .site-title {
   text-transform: uppercase;
@@ -1714,32 +1690,36 @@ body.custom-header-image .site-description {
 .header-image img {
   display: block; }
 
-body.no-max-width .page-title-container .page-header {
+body.no-max-width .page-banner .page-banner__inner {
   max-width: none; }
 
-.page-title-container {
+.page-banner {
   background-color: transparent; }
-  .page-title-container .page-header {
+  .page-banner .page-banner__inner {
     max-width: 1100px;
     margin-left: auto;
     margin-right: auto;
     position: relative;
     clear: both; }
-    .page-title-container .page-header:after {
+    .page-banner .page-banner__inner:after {
       content: " ";
       display: block;
       clear: both; }
-    .page-title-container .page-header .page-title {
-      width: 97.22222%;
+    .page-banner .page-banner__inner .page-banner__title {
+      width: 50%;
       float: left;
-      margin-left: 1.38889%;
-      margin-right: 1.38889%;
-      color: white;
-      font-weight: 200;
-      padding: 3% 1rem;
+      margin-left: 20px;
+      margin-right: 20px;
       margin-bottom: 0;
-      font-weight: 300;
-      font-size: 3rem; }
+      padding-top: 6.5%;
+      padding-bottom: 6.5%;
+    }
+    .page-banner .page-banner__inner .page-banner__title h1 {
+      font-weight: 600;
+      font-size: 3.6rem;
+      color: white;
+      line-height: 1.1;
+    }
 
 /*--------------------------------------------------------------
 # Hero
@@ -2825,6 +2805,18 @@ body.woocommerce-cart .primer-wc-cart-sub-menu {
   display: flex;
   align-items: center;
   flex-direction: row;
+  position: relative;
+}
+.site-header-wrapper:after {
+  content: "";
+  height: 1px;
+  width: 100%;
+  margin: 20px 0 0 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 .main-navigation-container {
   margin-left: auto;
