@@ -1,0 +1,346 @@
+/**
+# Custom styling over Velux theme
+--------------------------------------------------------------*/
+
+
+
+/*  Header
+-------------------------*/
+
+.site-header {
+  position: relative;
+  box-shadow: none !important;
+  color: #ffffff;
+}
+.site-header-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  position: relative;
+}
+.site-header-wrapper:after {
+  content: "";
+  height: 1px;
+  margin: 20px 0 0 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.main-navigation-container {
+  margin-left: auto;
+}
+
+.main-navigation .menu-item-type-custom a {
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  display: block;
+  padding: 0.7em 1.2em 0.4em;
+  background-color: $orange;
+  border-radius: 4px;
+  margin-left: 0.5em;
+}
+
+
+
+
+/*  Banner
+-------------------------*/
+
+.page-banner {
+  background-color: transparent; }
+  .page-banner .page-banner__inner {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    clear: both;
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle; }
+    .page-banner .page-banner__inner:after {
+      content: " ";
+      display: block;
+      clear: both; }
+
+      .page-banner .page-banner__inner .page-banner__title,
+      .page-banner .page-banner__inner .page-banner__text {
+        display: flex;
+        align-self: center;
+      }
+      /* Banner title */
+      .page-banner .page-banner__inner .page-banner__title {
+        width: 50%;
+        flex: 50%;
+        float: left;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 0;
+        padding-top: 6.5%;
+        padding-bottom: 6.5%;
+      }
+      .page-banner .page-banner__inner .page-banner__title h1 {
+        font-weight: 600;
+        font-size: 4rem;
+        color: white;
+        line-height: 1.1;
+      }
+      /* Banner copy */
+      .page-banner .page-banner__inner .page-banner__text {
+        width: 50%;
+        flex: 50%;
+        padding: 60px 0;
+        color: white;
+      }
+
+      /* Banner accent */
+      .page-banner:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        height: 10px;
+        background-color: #ff791a;
+        width: 275px;
+        left: 50%;
+        margin-left: -530px;
+      }
+
+
+
+
+
+/*  Footer
+-------------------------*/
+
+.site-footer {
+  margin-top: 30px;
+  padding: 60px 0;
+  color: #ffffff;
+}
+
+.site-footer .menu-primary-container {}
+.site-footer .menu-primary-container ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+}
+.site-footer .menu-primary-container ul li {
+  margin: 0; padding: 0;
+  display: flex;
+  flex: 0 0 50%; max-width: 50%;
+}
+.site-footer .menu-primary-container ul li a {
+  color: #ffffff;
+}
+
+
+
+/*  Page builder
+-------------------------*/
+
+.valign-middle .wp-block-kadence-column {
+  vertical-align: middle;
+  flex-direction: unset;
+}
+.valign-middle .wp-block-kadence-column .kt-inside-inner-col {
+  align-self: center;
+  flex: 1;
+}
+
+/* grey bg */
+.wp-block-kadence-rowlayout.brand-module {
+  font-size: 16px;
+}
+
+.wp-block-kadence-rowlayout.brand-module .wp-block-image { margin: 0 !important; }
+.wp-block-kadence-rowlayout.brand-module .wp-block-image img { display: block; }
+.wp-block-kadence-rowlayout.brand-module .kt-row-column-wrap {
+  background-color: #f2f2f2; padding: 0 !important;
+  margin-bottom: 30px;
+}
+.wp-block-kadence-rowlayout.brand-module .inner-column-2 { border-right: 1px solid rgba(0,0,0,0.2); }
+.wp-block-kadence-rowlayout.brand-module .inner-column-3 { padding-right: 30px; }
+
+
+
+/* ==================================================
+ # HELPER CLASSES
+ ================================================== */
+
+.wp-block-image img { display: block; }
+.rounded { border-radius: 5px; overflow: hidden; }
+.shadow { box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2); }
+
+
+/* ==================================================
+ # PAGES
+ ================================================== */
+
+
+/*  Home page
+-------------------------*/
+
+.stats .wp-block-kadence-column {
+  border-top: 1px solid rgba(0,0,0,0.2);
+  padding: 30px 0;
+}
+.stat {
+  &__num {
+    font-family: $serif;
+    font-size: 3.6em;
+    line-height: 1;
+    font-weight: 600;
+    margin-top: 0;
+  }
+  &__caption {
+    font-family: $sans;
+    font-weight: 600;
+    font-size: 1.1em;
+    line-height: 1.2;
+  }
+}
+
+.brands {
+  background-color: $grey-lightest;
+  border-radius: 5px;
+  & .wp-block-image { margin-bottom: 0; }
+}
+.brand {
+  &__meta {
+    margin-bottom: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 90%;
+    & + & { margin-top: 0; }
+    &:before {
+      position: relative;
+      top: 4px;
+      font-family: 'genericons';
+      font-size: 18px;
+      padding-right: 2px;
+    }
+    &-date:before { content: '\f303'; }
+  }
+}
+
+
+
+/*  Media centre
+-------------------------*/
+
+.display-posts-listing {
+  padding-left: 0;
+  & .entry-summary {
+    padding-top: 30px;
+    border-top: 1px solid #eeeeee;
+    margin: 1em 0 2em;
+  }
+  & .entry-title {
+    font-size: 2em;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+  }
+  & .entry-meta {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    & .posted-date:before { top: 5px; }
+  }
+}
+
+
+
+/*  About us
+-------------------------*/
+
+// Mapbox
+.mapboxgl-ctrl-bottom-right,
+.mapboxgl-ctrl-bottom-left { display: none; }
+
+#locations {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  .mapboxgl-canvas {
+    margin: auto;
+  }
+
+  @media only screen and (min-width: 1280px) {
+    width: 1280px;
+    margin-left: -640px;
+    left: 50%;
+    .mapboxgl-canvas {
+      width: 100% !important;
+    }
+  }
+}
+
+
+/* ==================================================
+ # TIMELINE
+ ================================================== */
+
+.timeline {
+  margin-bottom: 60px;
+  // year nav
+  &__nav {
+    display: flex;
+    flex-direction: row;
+    background-color: $grey-lightest;
+    &-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      padding: 10px 20px;
+      color: $grey-darker;
+      font-weight: 700;
+      &:hover { color: $charcoal; }
+    }
+  }
+  // slides
+  &__slide {
+    display: none;
+    &--active { display: block; }
+
+    &-image {
+      width: 100%;
+      display: block;
+      position: relative;
+      background-color: $grey;
+      &:before {
+        content: "";
+        display: block;
+        padding-top: 56.25%;
+      }
+    }
+    &-year {
+      font-size: 72px;
+      position: absolute;
+      bottom: 0; left: 30px;
+      color: $white;
+    }
+    // main content area
+    &-col {
+      padding: 30px;
+    }
+    &__content {
+      background-color: $charcoal;
+      color: $white;
+    }
+    &-title {
+      font-size: 24px;
+      color: $white;
+    }
+  }
+}
+
+
+
+

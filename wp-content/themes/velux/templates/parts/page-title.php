@@ -14,15 +14,23 @@
 
 		<div class="page-banner__title">
 			<?php
-				if( get_field('title') ){
+				if( get_field('banner_title') ){
 					echo '<h1>';
-				  the_field('title');
+				  the_field('banner_title');
 					echo '</h1>';
 				}else{
 					primer_the_page_title();
 				}
 			?>
 		</div>
+
+		<?php
+			if( get_field('banner_text') ){
+				echo '<div class="page-banner__text"><p class="text--xl">';
+				the_field('banner_text');
+				echo '</p></div>';
+			}
+		?>
 
 	</div>
 

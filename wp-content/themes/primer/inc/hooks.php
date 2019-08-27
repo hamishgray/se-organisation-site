@@ -490,7 +490,7 @@ function primer_the_page_title_wrapper( $args ) {
 
 	if ( is_single() ) {
 
-		$args['wrapper'] = 'h2';
+		$args['wrapper'] = 'h1';
 
 	}
 

@@ -1,0 +1,77 @@
+
+/*  Typography
+-------------------------*/
+
+
+// Text
+p { max-width: 840px; }
+.text--center, p[style*="text-align:center"] {
+  text-align: center; margin-left: auto; margin-right: auto;
+}
+.text--lg  { font-size: 17px; }
+.text--xl  { font-size: 19px; }
+.text--xxl { font-size: 21px; }
+
+
+
+// Title
+h1, h2, h3 {
+  margin-bottom: 0.8rem;
+}
+h4, h5, h6 {
+  margin-bottom: 0.4rem;
+}
+
+h1 {}
+h2 {}
+h3 {}
+h4 {}
+h5, h6 {
+}
+.title {
+  & + & { margin-bottom: 0; margin-top: 0; }
+  &--wide-caps {
+    font-family: $sans !important;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+  &--bold { font-weight: 600; }
+}
+* + h1, * + h2,
+* + h3, * + h4,
+* + h5, * + h6 { margin-top: 1em; }
+.title + h1, .title + h2,
+.title + h3, .title + h4,
+.title + h5, .title + h6 { margin-top: 0.2rem; }
+
+
+
+// Links
+.arrow-link {
+  margin-top: 1em;
+  & a {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 15px;
+    margin-top: 1.5em;
+    color: #1a1a1a !important;
+    &:after {
+      content: "";
+      background-image: url("assets/images/link-arrow.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      display: inline-block;
+      margin-left: 10px;
+      margin-bottom: -2px;
+      width: 16px; height: 16px;
+      @include transition;
+    }
+    &:hover:after {
+      margin-left: 16px;
+    }
+  }
+}
+

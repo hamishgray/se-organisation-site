@@ -310,7 +310,7 @@ class Primer_Customizer_Fonts {
 		 *
 		 * @var array
 		 */
-		$weights = (array) apply_filters( 'primer_font_weights', array( 300, 400, 700 ), $font, $font_type );
+		$weights = (array) apply_filters( 'primer_font_weights', array( 200, 300, 400, 500, 600, 700, 800, 900 ), $font, $font_type );
 		$weights = array_filter( array_map( 'absint', $weights ) );
 
 		sort( $weights );
