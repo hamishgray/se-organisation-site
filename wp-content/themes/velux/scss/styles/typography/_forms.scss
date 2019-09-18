@@ -1,0 +1,89 @@
+
+/*--------------------------------------------------------------
+# Forms
+--------------------------------------------------------------*/
+.nf-response-msg,
+.widget-area .nf-response-msg {
+  font-weight: bold; }
+  .nf-response-msg p:first-child,
+  .widget-area .nf-response-msg p:first-child {
+    font-style: italic;
+    font-weight: normal; }
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea,
+.select2-container .select2-choice {
+  color: rgba(34, 34, 34, 0.5);
+  border: 1px solid rgba(34, 34, 34, 0.1);
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  padding: 0.5rem;
+  resize: none;
+  width: 100%; }
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="url"]:focus,
+  input[type="password"]:focus,
+  input[type="search"]:focus,
+  input[type="number"]:focus,
+  input[type="tel"]:focus,
+  input[type="range"]:focus,
+  input[type="date"]:focus,
+  input[type="month"]:focus,
+  input[type="week"]:focus,
+  input[type="time"]:focus,
+  input[type="datetime"]:focus,
+  input[type="datetime-local"]:focus,
+  input[type="color"]:focus,
+  textarea:focus,
+  .select2-container .select2-choice:focus {
+    color: #222222; }
+
+.select2-container .select2-choice {
+  padding: 0.42rem 0.75rem; }
+
+.select2-drop-active,
+.select2-drop.select2-drop-above.select2-drop-active,
+.select2-dropdown-open.select2-drop-above .select2-choice,
+.select2-dropdown-open.select2-drop-above .select2-choices {
+  border-color: rgba(34, 34, 34, 0.1); }
+
+input[type="checkbox"],
+input[type="radio"] {
+  margin: 0 0.25em; }
+
+input[type="file"] {
+  font-size: 13.6px;
+  font-size: 0.85rem; }
+
+select {
+  border: 1px solid rgba(34, 34, 34, 0.1); }
+
+textarea {
+  width: 100%; }
+
+fieldset {
+  padding: 0.5em 1.5em;
+  border-color: rgba(34, 34, 34, 0.1); }
+
+legend {
+  padding: 0 1em;
+  text-transform: uppercase;
+  letter-spacing: 1px; }
+
+form label {
+  font-weight: bold; }

@@ -1,9 +1,30 @@
 
 @import "styles/variables";
 @import "styles/resets";
+@import "styles/normalize";
 
-@import "styles/theme";
+@import "styles/gutenberg";
+@import "styles/elements";
+@import "styles/media";
+@import "styles/jetpack";
+@import "styles/widgets";
+@import "styles/compatibility";
 
-@import "styles/typography";
-@import "styles/grid";
+@import "styles/typography/typography";
+@import "styles/typography/lists";
+@import "styles/typography/tables";
+@import "styles/typography/forms";
+
+@import "styles/layout/clearings";
+@import "styles/layout/alignment";
+@import "styles/layout/accessibility";
+@import "styles/layout/grid";
+
+@import "styles/page/navigation";
+@import "styles/page/comments";
+@import "styles/page/content";
+@import "styles/page/header";
+@import "styles/page/footer";
+@import "styles/page/hero";
+
 @import "styles/custom";

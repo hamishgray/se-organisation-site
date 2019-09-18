@@ -19,63 +19,72 @@ function timeline_display($atts,$content=null) {
 			'story1' 			=> esc_attr( get_option('timeline_2011_title1') ),
 			'story1_text' => esc_attr( get_option('timeline_2011_text1') ),
 			'story2' 			=> esc_attr( get_option('timeline_2011_title2') ),
-			'story2_text' => esc_attr( get_option('timeline_2011_text2') )
+			'story2_text' => esc_attr( get_option('timeline_2011_text2') ),
+			'image' 			=> esc_attr( get_option('timeline_2011_image') )
 		),
 		'2012' => array(
 			'title' => '2012',
 			'story1' 			=> esc_attr( get_option('timeline_2012_title1') ),
 			'story1_text' => esc_attr( get_option('timeline_2012_text1') ),
 			'story2' 			=> esc_attr( get_option('timeline_2012_title2') ),
-			'story2_text' => esc_attr( get_option('timeline_2012_text2') )
+			'story2_text' => esc_attr( get_option('timeline_2012_text2') ),
+			'image' 			=> esc_attr( get_option('timeline_2012_image') )
 		),
 		'2013' => array(
 			'title' => '2013',
 			'story1' 			=> esc_attr( get_option('timeline_2013_title1') ),
 			'story1_text' => esc_attr( get_option('timeline_2013_text1') ),
 			'story2' 			=> esc_attr( get_option('timeline_2013_title2') ),
-			'story2_text' => esc_attr( get_option('timeline_2013_text2') )
+			'story2_text' => esc_attr( get_option('timeline_2013_text2') ),
+			'image' 			=> esc_attr( get_option('timeline_2013_image') )
 		),
 		'2014' => array(
 			'title' => '2014',
 			'story1' 			=> esc_attr( get_option('timeline_2014_title1') ),
 			'story1_text' => esc_attr( get_option('timeline_2014_text1') ),
 			'story2' 			=> esc_attr( get_option('timeline_2014_title2') ),
-			'story2_text' => esc_attr( get_option('timeline_2014_text2') )
+			'story2_text' => esc_attr( get_option('timeline_2014_text2') ),
+			'image' 			=> esc_attr( get_option('timeline_2014_image') )
 		),
 		'2015' => array(
 			'title' => '2015',
 			'story1' 			=> esc_attr( get_option('timeline_2015_title1') ),
 			'story1_text' => esc_attr( get_option('timeline_2015_text1') ),
 			'story2' 			=> esc_attr( get_option('timeline_2015_title2') ),
-			'story2_text' => esc_attr( get_option('timeline_2015_text2') )
+			'story2_text' => esc_attr( get_option('timeline_2015_text2') ),
+			'image' 			=> esc_attr( get_option('timeline_2015_image') )
 		),
 		'2016' => array(
 			'title' => '2016',
 			'story1' 			=> esc_attr( get_option('timeline_2016_title1') ),
 			'story1_text' => esc_attr( get_option('timeline_2016_text1') ),
 			'story2' 			=> esc_attr( get_option('timeline_2016_title2') ),
-			'story2_text' => esc_attr( get_option('timeline_2016_text2') )
+			'story2_text' => esc_attr( get_option('timeline_2016_text2') ),
+			'image' 			=> esc_attr( get_option('timeline_2016_image') )
 		),
 		'2017' => array(
 			'title' => '2017',
 			'story1' 			=> esc_attr( get_option('timeline_2017_title1') ),
 			'story1_text' => esc_attr( get_option('timeline_2017_text1') ),
 			'story2' 			=> esc_attr( get_option('timeline_2017_title2') ),
-			'story2_text' => esc_attr( get_option('timeline_2017_text2') )
+			'story2_text' => esc_attr( get_option('timeline_2017_text2') ),
+			'image' 			=> esc_attr( get_option('timeline_2017_image') )
 		),
 		'2018' => array(
 			'title' => '2018',
 			'story1' 			=> esc_attr( get_option('timeline_2018_title1') ),
 			'story1_text' => esc_attr( get_option('timeline_2018_text1') ),
 			'story2' 			=> esc_attr( get_option('timeline_2018_title2') ),
-			'story2_text' => esc_attr( get_option('timeline_2018_text2') )
+			'story2_text' => esc_attr( get_option('timeline_2018_text2') ),
+			'image' 			=> esc_attr( get_option('timeline_2018_image') )
 		),
 		'2019' => array(
 			'title' => '2019',
 			'story1' 			=> esc_attr( get_option('timeline_2019_title1') ),
 			'story1_text' => esc_attr( get_option('timeline_2019_text1') ),
 			'story2' 			=> esc_attr( get_option('timeline_2019_title2') ),
-			'story2_text' => esc_attr( get_option('timeline_2019_text2') )
+			'story2_text' => esc_attr( get_option('timeline_2019_text2') ),
+			'image' 			=> esc_attr( get_option('timeline_2019_image') )
 		)
 	);
 
@@ -101,11 +110,10 @@ function timeline_display($atts,$content=null) {
 		// Build year content slides
 		$output.=
 			"
-			<div class='timeline__slide timeline__slide--inactive' data-slide-id='".$i."'>
-				<div class='timeline__slide-image'>
-					<h4 class='timeline__slide-year'>".$item['title']."</h4>
-				</div>
+			<div class='timeline__slide' data-slide-id='".$i."'>
+				<div class='timeline__slide-image' style='background-image: url(".$item['image'].");'></div>
 				<div class='timeline__slide__content'>
+					<h4 class='timeline__slide-year'>".$item['title']."</h4>
 					<div class='row'>
 						<div class='timeline__slide-col col col--6'>
 							<h5 class='timeline__slide-title'>".$item['story1']."</h5>

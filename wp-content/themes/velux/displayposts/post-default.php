@@ -8,7 +8,9 @@
 
 ?>
 
-<div class="entry-summary">
+<div class="display-post">
+
+	<h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 
   <div class="title entry-meta">
   	<?php if ( is_new_day() ) : ?>
@@ -16,8 +18,8 @@
   	<?php endif; ?>
   </div><!-- .entry-meta -->
 
-	<h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-
-	<?php the_excerpt(); ?>
+  <div class="entry-summary">
+  	<?php the_excerpt(); ?>
+  </div>
 
 </div><!-- .entry-summary -->

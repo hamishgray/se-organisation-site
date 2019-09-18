@@ -28,6 +28,7 @@
 
          map.on('load',function() {
            // console.log(data.controls)
+           map.scrollZoom.disable();
             // Add controls
            if(data.controls.navigation) {
              var navControl = new mapboxgl.NavigationControl();

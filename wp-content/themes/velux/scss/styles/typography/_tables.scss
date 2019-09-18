@@ -1,0 +1,35 @@
+
+/*--------------------------------------------------------------
+# Tables
+--------------------------------------------------------------*/
+table {
+  border-collapse: collapse;
+  margin: 0 0 1.5em;
+  width: 100%; }
+
+.hentry table th,
+.hentry table td {
+  padding: 0.5em;
+  text-align: left;
+  border: 1px solid rgba(34, 34, 34, 0.1);
+  border-left: none;
+  border-right: none; }
+
+.hentry table thead th {
+  border-bottom-width: 2px;
+  border-top: none; }
+
+.hentry table tfoot th {
+  border-top-width: 2px;
+  border-bottom: none; }
+
+.hentry table tr:hover td {
+  background-color: rgba(34, 34, 34, 0.075); }
+
+.widget table caption {
+  padding: 0 0.5em 0.5em;
+  font-weight: bold; }
+
+.widget table th,
+.widget table td {
+  text-align: center; }

@@ -10,10 +10,6 @@
 
 <div class="site-title-wrapper">
 
-	<?php primer_the_custom_logo(); ?>
-
-	<?php primer_the_site_title(); ?>
-
-	<?php primer_the_site_description(); ?>
+	<?php get_template_part( 'templates/parts/logo-svg' ); ?>
 
 </div><!-- .site-title-wrapper -->

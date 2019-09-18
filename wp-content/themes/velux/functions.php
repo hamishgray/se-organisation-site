@@ -405,3 +405,9 @@ function custom_scripts() {
 	wp_enqueue_script( 'custom_script', get_stylesheet_directory_uri() . '/js/site.js', array( 'jquery' ) );
 }
 add_action( 'wp_enqueue_scripts', 'custom_scripts' );
+
+// UPLOAD ENGINE
+function load_wp_media_files() {
+  wp_enqueue_media();
+}
+add_action( 'admin_enqueue_scripts', 'load_wp_media_files' );

@@ -23,12 +23,12 @@
 						<?php
 							the_custom_logo();
 						?>
-						<p>
+						<p class="text--sm">
 							Copyright © <?php echo date('Y'); ?> Secret Escapes Ltd.<br />
 							All rights reserved.
 						</p>
 					</div>
-					<div class="col col--8">
+					<div class="col col--8 text--600">
 						<?php wp_nav_menu(array(
 							'menu' => 'primary',
 							'orderby' => 'menu_order'

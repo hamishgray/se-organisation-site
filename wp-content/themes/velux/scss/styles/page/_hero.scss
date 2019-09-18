@@ -1,0 +1,106 @@
+
+/*--------------------------------------------------------------
+# Hero
+--------------------------------------------------------------*/
+.hero {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  padding: 2rem 0;
+  clear: both; }
+  .hero:after {
+    content: " ";
+    display: block;
+    clear: both; }
+  @media only screen and (min-width: 40.063em) {
+    .hero {
+      padding: 3rem 0; } }
+  .hero .hero-inner {
+    width: 97.22222%;
+    float: left;
+    margin-left: 1.38889%;
+    margin-right: 1.38889%;
+    padding: 0 1rem; }
+    @media only screen and (min-width: 40.063em) {
+      .hero .hero-inner {
+        width: 63.88889%;
+        float: left;
+        margin-left: 1.38889%;
+        margin-right: 1.38889%; } }
+  .hero .widget {
+    margin-bottom: 3rem;
+    font-size: 1.2em;
+    font-weight: 300;
+    background: none;
+    color: white;
+    padding: 0; }
+    .hero .widget .widget-title {
+      color: white;
+      font-size: 3rem;
+      line-height: 1;
+      text-align: left; }
+    .hero .widget a.button {
+      font-family: "Roboto", "Helvetica Neue", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background-color: transparent;
+      padding-left: 0;
+      padding-right: 0;
+      color: white;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+      -webkit-transition: 50ms linear border-color;
+      transition: 50ms linear border-color; }
+      .hero .widget a.button:after {
+        content: ' \25b6';
+        font-size: .5rem;
+        padding-left: 5px;
+        position: relative;
+        top: -2px;
+        -webkit-transition: 75ms ease-in-out padding;
+        transition: 75ms ease-in-out padding; }
+      .hero .widget a.button:hover {
+        border-color: white;
+        background-color: transparent; }
+        .hero .widget a.button:hover:after {
+          padding-left: 10px; }
+    @media only screen and (min-width: 40.063em) {
+      .hero .widget .widget-title {
+        color: white;
+        font-size: 5.5rem;
+        line-height: 1;
+        text-align: left; } }
+    .hero .widget:last-child {
+      margin-bottom: 0; }
+    .hero .widget h1,
+    .hero .widget h2,
+    .hero .widget h3,
+    .hero .widget h4,
+    .hero .widget h5,
+    .hero .widget h6,
+    .hero .widget p,
+    .hero .widget blockquote,
+    .hero .widget cite,
+    .hero .widget table,
+    .hero .widget ul,
+    .hero .widget li,
+    .hero .widget dd,
+    .hero .widget dt,
+    .hero .widget address,
+    .hero .widget code,
+    .hero .widget pre {
+      color: #fff; }
+    .hero .widget ul, .hero .widget ol {
+      padding-left: 0; }
+      .hero .widget ul li, .hero .widget ol li {
+        list-style: none; }
+    .hero .widget input, .hero .widget select, .hero .widget textarea {
+      color: rgba(34, 34, 34, 0.5); }
+  .hero label, .hero input, .hero select, .hero textarea {
+    display: inline;
+    width: auto; }
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  html :lang(hi) h2.widget-title,
+  html :lang(mr) h2.widget-title {
+    font-family: -webkit-body; } }

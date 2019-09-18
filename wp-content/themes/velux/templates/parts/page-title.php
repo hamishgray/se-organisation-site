@@ -8,7 +8,7 @@
 
 ?>
 
-<div class="page-banner">
+<div class="page-banner <?php if( is_front_page() ){ echo 'page-banner--home'; } ?>">
 
 	<div class="page-banner__inner">
 
@@ -26,12 +26,24 @@
 
 		<?php
 			if( get_field('banner_text') ){
-				echo '<div class="page-banner__text"><p class="text--xl">';
-				the_field('banner_text');
-				echo '</p></div>';
+				echo '
+				<div class="page-banner__text">
+					<p class="text--xl">';
+						the_field('banner_text');
+					echo '</p>';
+				echo '</div>';
 			}
 		?>
 
 	</div>
+
+
+	<?php
+		if ( get_field('banner_image') ) {
+			echo '<div class="page-banner__image" style="background-image: url(';
+				the_field('banner_image');
+			echo ');">';
+		}
+	?>
 
 </div><!-- .page-title-container -->
