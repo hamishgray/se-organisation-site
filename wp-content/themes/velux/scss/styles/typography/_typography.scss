@@ -275,10 +275,11 @@ input[type="text"], input[type="email"], input[type="url"], input[type="password
   }
 }
 
+
+
 /*--------------------------------------------------------------
 # Buttons
 --------------------------------------------------------------*/
-
 
 .btn a,
 a.button, a.button:visited,
@@ -312,4 +313,41 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
   }
 }
 
+
+
+/*--------------------------------------------------------------
+# Breaking News
+--------------------------------------------------------------*/
+
+.breaking-news {
+  display: block;
+  margin-bottom: 1.5em;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid $red;
+  background-color: rgba($red,0.05);
+  font-weight: 500;
+  font-size: 18px;
+  text-align: center;
+  & a {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 15px;
+    margin-top: 1.5em;
+    color: #1a1a1a !important;
+    &:after {
+      content: "";
+      background-image: url("assets/images/link-arrow.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      display: inline-block;
+      margin-left: 10px;
+      margin-bottom: -2px;
+      width: 16px; height: 16px;
+      @include transition;
+    }
+  }
+}
 

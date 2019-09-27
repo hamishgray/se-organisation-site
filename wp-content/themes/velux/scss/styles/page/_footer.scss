@@ -4,8 +4,16 @@
 --------------------------------------------------------------*/
 .site-footer {
   background-color: $grey-darkest !important; }
-  .site-footer .widget-title, .site-footer h1, .site-footer h2, .site-footer h3, .site-footer h4, .site-footer h5, .site-footer h6 {
-    color: #fff; }
+  .site-footer .widget-title,
+  .site-footer h1, .site-footer h2, .site-footer h3,
+  .site-footer h4, .site-footer h5, .site-footer h6,
+  .site-footer a, .site-footer a:visited, .site-footer a:hover {
+    color: #fff;
+  }
+  .site-footer hr {
+    border-color: rgba(255,255,255,0.2);
+    background-color: rgba(255,255,255,0.2);
+  }
 
 .footer-nav,
 .site-info-wrapper {

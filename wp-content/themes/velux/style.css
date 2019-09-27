@@ -1576,6 +1576,41 @@ input[type="text"], input[type="email"], input[type="url"], input[type="password
   color: #000 !important;
   background: #dadcdf;
 }
+/*--------------------------------------------------------------
+ # Breaking News
+ --------------------------------------------------------------*/
+.breaking-news {
+  display: block;
+  margin-bottom: 1.5em;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #d90032;
+  background-color: rgba(217, 0, 50, 0.05);
+  font-weight: 500;
+  font-size: 18px;
+  text-align: center;
+}
+.breaking-news a {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 15px;
+  margin-top: 1.5em;
+  color: #1a1a1a !important;
+}
+.breaking-news a:after {
+  content: "";
+  background-image: url("assets/images/link-arrow.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  margin-left: 10px;
+  margin-bottom: -2px;
+  width: 16px;
+  height: 16px;
+  transition: all 0.25s cubic-bezier(0.4, 0.08, 0.62, 0.94);
+}
 /**
  * Theme Name: Velux
  * Theme URI: https://github.com/godaddy/wp-velux-theme
@@ -2662,8 +2697,12 @@ body.no-max-width .page-banner .page-banner__inner {
 .site-footer {
   background-color: #1d1d23 !important;
 }
-.site-footer .widget-title, .site-footer h1, .site-footer h2, .site-footer h3, .site-footer h4, .site-footer h5, .site-footer h6 {
+.site-footer .widget-title, .site-footer h1, .site-footer h2, .site-footer h3, .site-footer h4, .site-footer h5, .site-footer h6, .site-footer a, .site-footer a:visited, .site-footer a:hover {
   color: #fff;
+}
+.site-footer hr {
+  border-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 .footer-nav, .site-info-wrapper {
   background: #1d1d23;
