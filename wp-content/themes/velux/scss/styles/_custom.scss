@@ -282,6 +282,12 @@
 /*  About us
 -------------------------*/
 
+// People
+
+.people {
+  & img { border-radius: 50%; overflow: hidden; }
+}
+
 // Mapbox
 .mapboxgl-ctrl-bottom-right,
 .mapboxgl-ctrl-bottom-left { display: none; }

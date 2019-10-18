@@ -3441,6 +3441,10 @@ body.no-max-width .site-info-wrapper .site-info {
 }
 /*  About us
  -------------------------*/
+.people img {
+  border-radius: 50%;
+  overflow: hidden;
+}
 .mapboxgl-ctrl-bottom-right, .mapboxgl-ctrl-bottom-left {
   display: none;
 }
