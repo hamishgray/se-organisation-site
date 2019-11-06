@@ -286,7 +286,7 @@ a.button, a.button:visited,
 button, input[type="button"], input[type="reset"], input[type="submit"] {
   display: inline-block;
   border: none;
-  background: linear-gradient(180deg, #FF791A 12.52%, #E66000 87.48%);
+  background: linear-gradient(180deg, $orange 12.52%, $orange-dark 87.48%);
   color: $white !important;
   line-height: 1;
   white-space: nowrap;
@@ -298,18 +298,35 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
   &:focus,&:visited,
   &:hover {
     cursor: pointer;
-    background-color: darken($orange, 10);
+    background-color: $orange-dark;
     color: $white !important;
   }
 }
-.btn--outline a {
+.btn--outline a,
+a.btn--outline {
   background: transparent;
   color: $grey-darkest !important;
   border: 1px solid $grey-lighter;
-  &:visited, &:focus { color: $grey-darkest !important; }
+  &:visited, &:focus {
+    background: transparent;
+    color: $grey-darkest !important;
+  }
   &:hover {
     color: $black !important;
     background: $grey-lighter;
+  }
+}
+.btn--subtle a,
+a.btn--subtle {
+  background: $turqouise-lightest;
+  color: $grey-darkest !important;
+  &:visited, &:focus {
+    background: $turqouise-lightest;
+    color: $grey-darkest !important;
+  }
+  &:hover {
+    background: $turqouise;
+    color: $white !important;
   }
 }
 

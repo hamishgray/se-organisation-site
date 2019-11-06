@@ -1561,20 +1561,33 @@ input[type="text"], input[type="email"], input[type="url"], input[type="password
 }
 .btn a:focus, a.button:focus, a.button:visited:focus, button:focus, input[type="button"]:focus, input[type="reset"]:focus, input[type="submit"]:focus, .btn a:visited, a.button:visited, a.button:visited:visited, button:visited, input[type="button"]:visited, input[type="reset"]:visited, input[type="submit"]:visited, .btn a:hover, a.button:hover, a.button:visited:hover, button:hover, input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover {
   cursor: pointer;
-  background-color: #e65f00;
+  background-color: #e66000;
   color: #fff !important;
 }
-.btn--outline a {
+.btn--outline a, a.btn--outline {
   background: transparent;
   color: #1d1d23 !important;
   border: 1px solid #dadcdf;
 }
-.btn--outline a:visited, .btn--outline a:focus {
+.btn--outline a:visited, a.btn--outline:visited, .btn--outline a:focus, a.btn--outline:focus {
+  background: transparent;
   color: #1d1d23 !important;
 }
-.btn--outline a:hover {
+.btn--outline a:hover, a.btn--outline:hover {
   color: #000 !important;
   background: #dadcdf;
+}
+.btn--subtle a, a.btn--subtle {
+  background: #a2f2fa;
+  color: #1d1d23 !important;
+}
+.btn--subtle a:visited, a.btn--subtle:visited, .btn--subtle a:focus, a.btn--subtle:focus {
+  background: #a2f2fa;
+  color: #1d1d23 !important;
+}
+.btn--subtle a:hover, a.btn--subtle:hover {
+  background: #099aaa;
+  color: #fff !important;
 }
 /*--------------------------------------------------------------
  # Breaking News
