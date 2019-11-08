@@ -2,6 +2,8 @@
 /*  Variables
 -------------------------*/
 
+
+// Colours
 $turqouise:           #008293;
 $turqouise-lightest:  #A2F2FA;
 $turqouise-lighter:   #50D7E5;
@@ -32,8 +34,7 @@ $black:          #000;
 $charcoal:       #17171a;
 
 
-
-
+// Fonts
 $sans: 'Source Sans Pro', sans-serif;
 $serif: 'Source Serif Pro', Georgia, serif;
 
@@ -41,3 +42,23 @@ $serif: 'Source Serif Pro', Georgia, serif;
 // Mixins
 $transition-time: .25s;
 @mixin transition() { transition: all .25s cubic-bezier(.4,.08,.62,.94); }
+
+
+// Breakpoints
+$xxxl: 1200px;
+$xxl:  970px;
+$xl:   800px;
+$lg:   650px;
+$md:   450px;
+$sm:   330px;
+
+// horizontal breakpoints
+@mixin bp($width){
+  @media (min-width: $width){ @content; }
+}
+
+// vertical breakpoint
+@mixin vbp($width){
+  @media (min-height: $width){ @content; }
+}
+
