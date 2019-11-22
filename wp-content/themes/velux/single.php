@@ -18,12 +18,6 @@ get_header(); ?>
 
 		<?php get_template_part( 'content' ); ?>
 
-		<?php if(function_exists('mpdf_pdfbutton')) mpdf_pdfbutton(
-			true,
-			'<img src="http://localhost/se-organisation-site/wp-content/plugins/wp-mpdf/pdf.png" alt="This page as PDF" border="0"> Download article PDF',
-			'Login to download this PDF'
-		); ?>
-
 		<?php primer_post_nav(); ?>
 
 	<?php endwhile; ?>

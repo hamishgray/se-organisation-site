@@ -41,14 +41,14 @@ a {
 --------------------------------------------------------------*/
 .main-navigation-container {
   clear: both; }
-  @media only screen and (max-width: 40.063em) {
+  @media only screen and (max-width: $xxl) {
     .main-navigation-container {
       content: "";
       display: table;
       table-layout: fixed;
       width: 100%;
       position: relative; } }
-  @media only screen and (min-width: 40.063em) {
+  @media only screen and (min-width: $xxl) {
     .main-navigation-container {
       clear: none;
       float: right; } }
@@ -57,28 +57,25 @@ a {
   font-size: 1rem;
   font-weight: 500;
   display: none; }
-  .main-navigation.open {
-    display: block; }
-    @media only screen and (max-width: 40.063em) {
-      .main-navigation.open {
-        margin-top: 25px; } }
+  .main-navigation.open { display: block; }
+
   .main-navigation:not(.open) ul.menu > li.current_page_item > a,
   .main-navigation:not(.open) ul.menu > li.current-menu-item > a,
   .main-navigation:not(.open) ul.menu > li.current_page_ancestor > a,
   .main-navigation:not(.open) ul.menu > li.current_page_parent > a,
   .main-navigation:not(.open) ul.menu > li.current-menu-ancestor > a {
     border-color: white; }
-  @media only screen and (max-width: 40.063em) {
+  @media only screen and (max-width: $xxl) {
     .main-navigation {
       position: absolute;
-      top: 0;
+      top: 100%;
       left: 0;
       right: 0;
       z-index: 9999; } }
-  @media only screen and (min-width: 40.063em) {
+  @media only screen and (min-width: $xxl) {
     .main-navigation {
       display: block; } }
-  @media only screen and (min-width: 40.063em) {
+  @media only screen and (min-width: $xxl) {
     .main-navigation .menu-main-menu-container {
       width: auto;
       text-align: center; } }
@@ -98,14 +95,14 @@ a {
       background-color: rgba(0, 0, 0, 0.1); }
     .main-navigation .expand:before {
       content: "+"; }
-    @media only screen and (min-width: 40.063em) {
+    @media only screen and (min-width: $xxl) {
       .main-navigation .expand {
         display: none; } }
   .main-navigation .menu-item-has-children {
     position: relative; }
     .main-navigation .menu-item-has-children.open > .expand:before {
       content: "-"; }
-  @media only screen and (max-width: 40.063em) {
+  @media only screen and (max-width: $xxl) {
     .main-navigation li li {
       text-indent: 1rem; }
     .main-navigation li li li {
@@ -115,9 +112,11 @@ a {
   .main-navigation ul {
     list-style: none;
     margin: 0;
-    padding-left: 0; }
+    padding-left: 20px;
+    padding-right: 20px; }
     .main-navigation ul.menu > li > a {
-      border-bottom: 3px solid transparent; }
+      // border-bottom: 3px solid transparent;
+    }
     .main-navigation:not(.open) ul.menu > li > a:hover {
       border-color: rgba($white,0.5) !important; }
     .main-navigation ul.menu > li.current_page_item > a,
@@ -129,27 +128,25 @@ a {
     .main-navigation ul a {
       color: white;
       display: block;
-      padding: 1.2em .5em;
-      border-bottom: 2px solid rgba(0, 0, 0, 0.05); }
-      @media only screen and (min-width: 40.063em) {
+      padding: 15px 0;
+      border-top: 1px solid rgba($white,0.2); }
+      .main-navigation ul li:first-child a { border-top: 0; }
+      @media only screen and (min-width: $xxl) {
         .main-navigation ul a {
-          padding-top: 1.4em;
-          padding-bottom: 1.4em;
-          border-bottom: none; } }
+          padding: 1.8em 10px;
+          border-top: none; } }
     .main-navigation ul ul {
       z-index: 99999;
       display: none; }
-      @media only screen and (min-width: 40.063em) {
+      @media only screen and (min-width: $xxl) {
         .main-navigation ul ul a {
           padding: 1em .75em;
           text-align: left; } }
-      @media only screen and (min-width: 40.063em) {
+      @media only screen and (min-width: $xxl) {
         .main-navigation ul ul {
           display: block;
           position: absolute;
-          left: -999em;
-          -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2); }
+          left: -999em; }
           .main-navigation ul ul ul {
             left: -999em;
             top: 0; }
@@ -161,7 +158,7 @@ a {
     .main-navigation ul li:hover > ul,
     .main-navigation ul li.focus > ul {
       left: auto; }
-  @media only screen and (min-width: 40.063em) {
+  @media only screen and (min-width: $xxl) {
     .main-navigation li {
       position: relative;
       display: inline-block; }
@@ -185,7 +182,7 @@ a {
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     display: none; }
-    @media only screen and (min-width: 40.063em) {
+    @media only screen and (min-width: $xxl) {
       .main-navigation .sub-menu .menu-item-has-children > a::after {
         display: inline; } }
 
@@ -195,14 +192,14 @@ body.no-max-width .main-navigation {
 .menu-toggle {
   display: inline-block;
   margin: 0 auto;
-  width: 3.9rem;
-  padding: 0.15rem 0.6rem 0.6rem 0.6rem;
+  width: 45px;
+  padding: 0;
   cursor: pointer;
   position: absolute;
   z-index: 9999;
   right: 20px;
-  top: 20px; }
-  @media only screen and (min-width: 40.063em) {
+  top: 25px; }
+  @media only screen and (min-width: $xxl) {
     .menu-toggle {
       display: none; } }
   .menu-toggle div {
@@ -250,7 +247,7 @@ body.no-max-width .main-navigation {
         background-color: #51748e; }
   .navigation.pagination .paging-nav-text {
     display: none; }
-  @media only screen and (max-width: 40.063em) {
+  @media only screen and (max-width: $xxl) {
     .navigation.pagination .paging-nav-text {
       display: inline-block;
       float: left;

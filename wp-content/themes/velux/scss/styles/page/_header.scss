@@ -5,20 +5,33 @@
 
 .site-header-wrapper {
   position: relative;
-  z-index: 1;
+  z-index: 9999;
   max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
-  padding-bottom: 25px; }
-  .site-header-wrapper:after {
-    content: " ";
-    display: block;
-    clear: both; }
-  @media screen and (min-width: 800px) {
-    .site-header-wrapper {
-      padding-bottom: 0; } }
-  body.no-max-width .site-header-wrapper {
-    max-width: none; }
+}
+.site-header-wrapper:after {
+  content: " ";
+  display: block;
+  clear: both;
+  height: 1px;
+  margin: 20px 0 0 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+@media screen and (min-width: $xxl) {
+  .site-header-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+}
+
+body.no-max-width .site-header-wrapper { max-width: none; }
+
 
 
 .site-header {
@@ -45,7 +58,7 @@
       float: left;
       margin-left: 1.38889%;
       margin-right: 1.38889%; }
-    @media only screen and (min-width: 40.063em) {
+    @media only screen and (min-width: $xxl) {
       .site-header .row .hero {
         width: 55.55556%;
         float: left;
@@ -57,13 +70,20 @@ body.custom-header-image .site-description {
   text-shadow: 1px 1px 15px rgba(0, 0, 0, 0.5); }
 
 .site-title-wrapper {
-  padding: 20px 0 0 20px;
-  width: auto;
-  float: left; }
-  @media only screen and (min-width: 40.063em) {
+  float: left;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 20px;
+  width: 50%;
+  max-width: 260px; }
+  @media only screen and (min-width: $xxl) {
     .site-title-wrapper {
       padding-top: 0;
-      text-align: left; }
+      padding-bottom: 0;
+      text-align: left;
+      width: 50%;
+      max-width: 300px;
+    }
     .site-title-wrapper img { display: block; }
   }
 
@@ -81,7 +101,7 @@ body.custom-header-image .site-description {
   text-transform: uppercase;
   border-right: none;
   display: block; }
-  @media only screen and (min-width: 40.063em) {
+  @media only screen and (min-width: $xxl) {
     .site-title {
       display: inline-block;
       font-size: 2rem;
@@ -98,7 +118,7 @@ body.custom-header-image .site-description {
   display: inline;
   padding: 0 15px 0 0px;
   color: #ffffff; }
-  @media only screen and (min-width: 40.063em) {
+  @media only screen and (min-width: $xxl) {
     .site-description {
       padding-left: 8px;
       border-left: 1px solid #fff;
@@ -121,29 +141,16 @@ body.no-max-width .page-banner .page-banner__inner {
 
 .custom-logo-link {
   display: block;
-  max-width: 300px;
+  width: 100%;
+  @media only screen and (min-width: $xxl) {
+    max-width: 300px;
+  }
 }
 .site-header {
   position: relative;
   box-shadow: none !important;
   color: #ffffff;
   & svg.site-logo { display: block; }
-}
-.site-header-wrapper {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  position: relative;
-}
-.site-header-wrapper:after {
-  content: "";
-  height: 1px;
-  margin: 20px 0 0 20px;
-  background-color: rgba(255, 255, 255, 0.1);
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
 }
 .main-navigation-container {
   margin-left: auto;

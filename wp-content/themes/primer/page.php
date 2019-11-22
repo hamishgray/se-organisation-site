@@ -12,8 +12,9 @@
  * @package Primer
  * @since   1.0.0
  */
+?>
 
-get_header(); ?>
+<?php get_header(); ?>
 
 <div id="primary" class="content-area">
 

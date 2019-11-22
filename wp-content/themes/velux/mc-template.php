@@ -1,10 +1,11 @@
 <?php
 /* Template Name: Media Centre Template */
+
 ?>
 
-<?php
-get_header();
-?>
+<?php get_template_part('redirect-banner'); ?>
+
+<?php get_header(); ?>
 
 <div id="primary" class="content-area">
 
