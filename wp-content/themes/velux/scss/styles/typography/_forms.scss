@@ -71,7 +71,10 @@ input[type="file"] {
   font-size: 0.85rem; }
 
 select {
-  border: 1px solid rgba(34, 34, 34, 0.1); }
+  border: 1px solid rgba(34, 34, 34, 0.1);
+  height: 40px;
+  background: white;
+  width: 100%; }
 
 textarea {
   width: 100%; }

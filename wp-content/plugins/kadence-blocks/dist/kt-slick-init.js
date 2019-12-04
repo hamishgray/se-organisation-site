@@ -21,7 +21,8 @@ jQuery( document ).ready( function( $ ) {
 			xs = parseInt( container.attr( 'data-columns-xs' ) ),
 			ss = parseInt( container.attr( 'data-columns-ss' ) ),
 			scroll = parseInt( container.attr( 'data-slider-scroll' ) ),
-			sliderType = container.attr('data-slider-type');
+			sliderType = container.attr('data-slider-type'),
+			slidercenter = container.attr( 'data-slider-center-mode' );
 		var slickRtl = false;
 		var scrollSxxl = xxl,
 			scrollSxl = xl,
@@ -47,10 +48,15 @@ jQuery( document ).ready( function( $ ) {
 			container.find( '.kb-slide-item' ).each( function() {
 				$( this ).css( 'maxWidth', Math.floor( ( 80 / 100 ) * container.innerWidth() ) );
 			} );
+			if ( '' !== slidercenter && 'false' === slidercenter ) {
+				slidercenter = false;
+			} else {
+				slidercenter = true;
+			}
 			container.slick( {
 				slidesToScroll: 1,
 				slidesToShow: 1,
-				centerMode: true,
+				centerMode: slidercenter,
 				variableWidth: true,
 				arrows: sliderArrows,
 				speed: sliderAnimationSpeed,
@@ -63,17 +69,21 @@ jQuery( document ).ready( function( $ ) {
 			} );
 			var resizeTimer;
 
-			$( window ).on('resize', function( e ) {
+			$( window ).on( 'resize', function( e ) {
 				clearTimeout( resizeTimer );
-				resizeTimer = setTimeout(function() {
-
+				resizeTimer = setTimeout( function() {
 					container.find( '.kb-slide-item' ).each( function() {
 						$( this ).css( 'maxWidth', Math.floor( ( 80 / 100 ) * container.innerWidth() ) );
 					} );
-							
 				}, 10 );
 			} );
 		} else if ( sliderType && sliderType === 'slider' ) {
+			var sliderFade = container.attr('data-slider-fade');
+			if ( 'false' == sliderFade ) {
+				sliderFade = false;
+			} else {
+				sliderFade = true;
+			}
 			container.slick( {
 				slidesToShow: 1,
 				slidesToScroll: 1,
@@ -81,11 +91,81 @@ jQuery( document ).ready( function( $ ) {
 				speed: sliderAnimationSpeed,
 				autoplay: sliderAuto,
 				autoplaySpeed: sliderSpeed,
-				fade: true,
+				fade: sliderFade,
 				pauseOnHover: sliderPause,
 				rtl: slickRtl,
 				adaptiveHeight: true,
 				dots: sliderDots,
+			} );
+			$( window ).on( 'kadence-tabs-open', function( e ) {
+				container.slick( 'refresh' );
+			} );
+		} else if ( sliderType && sliderType === 'thumbnail' ) {
+			var sliderFade = container.attr('data-slider-fade');
+			var sliderID = container.attr('id');
+			var sliderThumbID = container.attr('data-slider-nav');
+			if ( 'false' == sliderFade ) {
+				sliderFade = false;
+			} else {
+				sliderFade = true;
+			}
+			container.slick( {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				arrows: sliderArrows,
+				speed: sliderAnimationSpeed,
+				autoplay: sliderAuto,
+				autoplaySpeed: sliderSpeed,
+				fade: sliderFade,
+				pauseOnHover: sliderPause,
+				rtl: slickRtl,
+				adaptiveHeight: true,
+				dots: sliderDots,
+				asNavFor: '#' + sliderThumbID,
+			} );
+			$( '#' + sliderThumbID ).slick( {
+				slidesToShow: xxl,
+				slidesToScroll: 1,
+				asNavFor: '#' + sliderID,
+				dots: false,
+				rtl: slickRtl,
+				centerMode: false,
+				focusOnSelect: true,
+				responsive: [
+					{
+						breakpoint: 1499,
+						settings: {
+							slidesToShow: xl,
+						},
+					},
+					{
+						breakpoint: 1199,
+						settings: {
+							slidesToShow: md,
+						},
+					},
+					{
+						breakpoint: 991,
+						settings: {
+							slidesToShow: sm,
+						},
+					},
+					{
+						breakpoint: 767,
+						settings: {
+							slidesToShow: xs,
+						},
+					},
+					{
+						breakpoint: 543,
+						settings: {
+							slidesToShow: ss,
+						},
+					},
+				],
+			} );
+			$( window ).on( 'kadence-tabs-open', function( e ) {
+				container.slick( 'refresh' );
 			} );
 		} else {
 			container.slick( {
@@ -136,6 +216,9 @@ jQuery( document ).ready( function( $ ) {
 						},
 					},
 				],
+			} );
+			$( window ).on( 'kadence-tabs-open', function( e ) {
+				container.slick( 'refresh' );
 			} );
 		}
 	}

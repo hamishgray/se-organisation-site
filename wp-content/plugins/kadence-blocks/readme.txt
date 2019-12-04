@@ -1,10 +1,10 @@
 === Kadence Blocks – Gutenberg Page Builder Toolkit ===
 Contributors: britner
 Tags: gutenberg, blocks, page builder, google fonts, dual buttons, svg icons, editor width,
-Donate link: https://www.kadencethemes.com/about-us/
+Donate link: https://www.kadencewp.com/about-us/
 Requires at least: 5.2
-Tested up to: 5.2.2
-Stable tag: 1.6.2
+Tested up to: 5.3.0
+Stable tag: 1.7.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,6 +20,7 @@ This plugin adds custom blocks and options to extend Gutenberg's editing capabil
 = Custom Blocks Include =
 * Row Layout - [demo](https://www.kadenceblocks.com/row-layout-block/)
 * Advanced Gallery - [demo](https://www.kadenceblocks.com/custom-blocks/advanced-gallery/)
+* Form - [demo](https://www.kadenceblocks.com/form-block/)
 * Advanced Heading - [demo](https://www.kadenceblocks.com/advanced-heading-block/)
 * Advanced Button - [demo](https://www.kadenceblocks.com/advanced-button-block/)
 * Tabs - [demo](https://www.kadenceblocks.com/tabs-block/)
@@ -60,7 +61,7 @@ In an effort to create an easier way to use Gutenberg in a more "page building e
 
 = Source files =
 
-[github](https://github.com/kadencethemes/kadence-blocks)
+[github](https://github.com/kadencewp/kadence-blocks)
 
 = Support =
 
@@ -85,6 +86,134 @@ Install the plugin into the `/wp-content/plugins/` folder, and activate it.
 6. Editor Width settings inside Gutenberg
 
 == Changelog ==
+
+= 1.7.7 =
+* Fix: Mobile Background video not filling height.
+* Fix: Masonry catch if width and height data missing.
+* Add: First Starter package template.
+* Update: slider css, remove icon font.
+
+= 1.7.6 =
+* Fix: styling issue with inline advanced typography.
+* Fix: visibility setting issue.
+* Tweak: Video Background for IE11 and edge.
+
+= 1.7.5 =
+* Fix: Icon list colors not working.
+* Fix: Gutenberg plugin changes mediaUpload.
+
+= 1.7.4 =
+* Fix: Icon css not loading correctly.
+* Fix Accordion issue with reusable.
+
+= 1.7.3 =
+* Update: Change how Blocks CSS is loaded, now only loads for blocks used on page.
+* Fix: Form Button Border Radius when 0.
+* Add: telephone field to form field options.
+* Fix: Small css styling when custom colors off.
+
+= 1.7.2 =
+* Small Tweak: Form CSS
+* Update: Admin Gallery Block CSS for GB update.
+* Add: Text transform option to Form Button.
+
+= 1.7.1 =
+* Fix: Update gallery to collect new alt text.
+* Fix: Possible fetch error in form block admin.
+* Add: Box Shadow to Column
+
+= 1.7.0 =
+* Add: New Form Block!!
+* Fix: More Translation strings updated, all need text domain.
+* Fix: Gallery Block not setting link url correctly for media size.
+* Update: CSS fixes for Gutenberg 6.7.
+* Add: Offload Media support for backgrounds css.
+
+= 1.6.19 =
+* Fix: settings link issue.
+
+= 1.6.18 =
+* Fix: issue with button large and small settings.
+* Fix: Testimonial container padding left and right switch.
+* Fix: Issue with info box when media set to none.
+
+= 1.6.17 =
+* Fix: issue with turned off gallery block under typo.
+* Update: Button block now uses common 'button' class so it can inherit styles from themes.
+* Fix: empty styles if input box cleared for testimonial block.
+* Update: Add tablet padding/margin settings to columns block.
+* Fix: Default Color refresh issue.
+* Add: Text transform button option.
+* Add: Alpha channel to overlay gradient.
+
+= 1.6.16 =
+* Fix: Header Block, Gutenberg doesn't allow className attribute to be added to an internal tag.
+
+= 1.6.15 =
+* Fix: Typo - Thanks andreas-wpk
+* Update: Heading to allow 0 for margin setting.
+* Update: Issue where the default block settings could break.
+
+= 1.6.14 =
+* Fix: 6.5 duplicate id issue.
+* Update: Add 4 more prebuilt sections.
+* Update: Add support for EditorsKit block navigator toolbar
+* Update: Add "noCustomDefaults" attribute to row block.
+* Update: Tweak row editor styles.
+
+= 1.6.13 =
+* Fix: Small CSS issue with some themes adding underline.
+* Fix: Small CSS issue with tabs.
+* Update: Gallery Margin.
+* Add: Option for no icon or image with info box.
+* Add: Mobile and Tablet text align for into box.
+
+= 1.6.12 =
+* Fix: issue causing Cannot read property ‘0’ of undefined
+* Update: Tab move tools so no overlap.
+
+= 1.6.11 =
+* Fix: Default Colors update.
+* Update: Tabs allow moving and deleting.
+
+= 1.6.10 =
+* Fix: IE issue with testimonial grid.
+* Add: Column Color settings.
+* Update: Allow for better fallback when images are small in gallery.
+* Update: Icon list with up/down move and remove controls.
+
+= 1.6.9 =
+* Fix: Bug with slider in editor nested in rows.
+* Add: Tab anchor to support custom anchors.
+* Add: Tab Title column options!
+
+= 1.6.8 =
+* Add: Row/Layout Background Slider Options
+* Add: Row/Layout Background Video Options
+* Add: Info Box Tablet and Mobile Media Align options.
+
+= 1.6.7 =
+* Fix: Margin for fluid carousel.
+* Fix: Icon list if not using Gutenberg Plugin.
+* Fix: Testimonial empty inline styles.
+* Add: Option for fluid carousel gallery to be left aligned.
+* Add: rem units to row margin, heading margin and gallery margin.
+
+= 1.6.6 =
+* Fix: Updating not showing
+
+= 1.6.5 =
+* Fix: Carousel in tabs issue.
+* Fix: Carousel lightbox count off.
+* Add: Gallery Default Settings.
+* Update: Icon list for Gutenberg 6.2
+
+= 1.6.4 =
+* Fix: Info Box image issue.
+
+= 1.6.3 =
+* Fix: Info Box image issue with margin.
+* Add: Info Box Icon vertical align.
 
 = 1.6.2 =
 * Fix: Info Box image issue.
@@ -176,7 +305,7 @@ Install the plugin into the `/wp-content/plugins/` folder, and activate it.
 * Add: Prebuilt testimonial.
 
 = 1.5.2 =
-* Add: Fullwidth setting to Advanced Button.
+* Add: Full-width setting to Advanced Button.
 * Add: Text Transform to Testimonials.
 * Add: Image Ratio to Card Testimonial style.
 
@@ -216,7 +345,7 @@ Install the plugin into the `/wp-content/plugins/` folder, and activate it.
 * Add: Video Popup target to Button!
 * Update: Button Defaults moved to Kadence Control Plugin.
 * Add: Button Settings visibility
-* Add: nofollow option to buttons.
+* Add: no-follow option to buttons.
 * Add: Opacity to Buttons Background and Border.
 * Add: Button Gap.
 * Add: Background Image option to columns.
@@ -246,8 +375,8 @@ Install the plugin into the `/wp-content/plugins/` folder, and activate it.
 * Update: Block Icons.
 
 = 1.3.9 =
-* Add: Differnet size units to Margin, maxwidth and minheight controls in row layout.
-* Update: Add some fallback support for content imported to a muitisite where it strips html.
+* Add: Different size units to Margin, max-width and min0height controls in row layout.
+* Update: Add some fallback support for content imported to a muiltisite where it strips html.
 * Updates: Better Mobile Parallax.
 * Fix: Attempt fix for Tabs in widget area.
 
@@ -263,8 +392,8 @@ Install the plugin into the `/wp-content/plugins/` folder, and activate it.
 * Fix: Much smoother accordion animation.
 * Fix: Info Box Prebuilt error.
 * Fix: Issue with parallax on mobile.
-* Update: Allow Accordion Panes to be rearanged.
-* Update: Move accodion wrap tag into main accordion settings panel.
+* Update: Allow Accordion Panes to be rearranged.
+* Update: Move accordion wrap tag into main accordion settings panel.
 
 = 1.3.5 =
 * Fix: Font Weight tab titles, remove underline if theme adding.

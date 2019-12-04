@@ -25,6 +25,7 @@
 						?>
 						<br>
 						<p class="text--sm">
+							<a href="https://www.secretescapes.com/current-sales" target="_blank">www.secretescapes.com</a><br />
 							Copyright © <?php echo date('Y'); ?> Secret Escapes Ltd.<br />
 							All rights reserved <br />
 							<a href="https://d1x3cbuht6sy0f.cloudfront.net/legal/slaveryStatement.pdf">Modern slavery statement</a>

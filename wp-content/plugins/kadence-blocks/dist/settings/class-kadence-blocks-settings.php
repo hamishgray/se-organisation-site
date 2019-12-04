@@ -185,7 +185,7 @@ class Kadence_Blocks_Settings {
 		if ( get_option( 'kadence_blocks_redirect_on_activation', false ) ) {
 			delete_option( 'kadence_blocks_redirect_on_activation' );
 			if ( ! isset( $_GET['activate-multi'] ) ) {
-				wp_safe_redirect( admin_url( 'options-general.php?page=kadence_blocks' ) );
+				wp_safe_redirect( $this->settings_link() );
 			}
 		}
 	}
@@ -211,21 +211,46 @@ class Kadence_Blocks_Settings {
 		} else {
 			$plugins = array();
 		}
-		wp_enqueue_script( 'kadence-blocks-deregister-js', KT_BLOCKS_URL . 'dist/settings/blocks-deregister.js', array( 'wp-blocks' ), KT_BLOCKS_VERSION, true );
+		$options = get_option( 'kt_blocks_unregistered_blocks' );
+		if ( isset( $options['kadence/advnacedgallery'] ) ) {
+			unset( $options['kadence/advnacedgallery'] );
+			update_option( 'kt_blocks_unregistered_blocks', $options );
+		}
+		wp_enqueue_script( 'kadence-blocks-deregister-js', KADENCE_BLOCKS_URL . 'dist/settings/blocks-deregister.js', array( 'wp-blocks' ), KADENCE_BLOCKS_VERSION, true );
 		wp_localize_script(
 			'kadence-blocks-deregister-js',
 			'kt_deregister_params',
 			array(
-				'deregister'       => get_option( 'kt_blocks_unregistered_blocks' ),
+				'deregister'       => $options,
 				'dergisterplugins' => $plugins,
 			)
 		);
 	}
 	/**
+	 * Returns a base64 URL for the SVG for use in the menu.
+	 *
+	 * @param  bool $base64 Whether or not to return base64-encoded SVG.
+	 * @return string
+	 */
+	private function get_icon_svg( $base64 = true ) {
+		$svg = '<svg viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg"><g><path d="M172.918,180.559l-145.836,-161.118l0,161.118l145.836,0Z" style="fill:#fff;fill-rule:nonzero;"/><path d="M172.918,19.441l-68.198,75.345l-68.311,-75.345l136.509,0Z" style="fill:#fff;fill-rule:nonzero;"/></g></svg>';
+
+		if ( $base64 ) {
+			return 'data:image/svg+xml;base64,' . base64_encode( $svg );
+		}
+
+		return $svg;
+	}
+	/**
 	 * Add option page menu
 	 */
 	public function add_menu() {
-		$page = add_options_page( __( 'Kadence Blocks -  Gutenberg Page Builder Blocks', 'kadence-blocks' ), __( 'Kadence Blocks' ), 'edit_pages', 'kadence_blocks', array( $this, 'config_page' ) );
+		if ( apply_filters( 'kadence_blocks_admin_menu_options', true ) ) {
+			$page = add_options_page( __( 'Kadence Blocks -  Gutenberg Page Builder Blocks', 'kadence-blocks' ), __( 'Kadence Blocks' ), 'edit_pages', 'kadence_blocks', array( $this, 'config_page' ) );
+		} else {
+			add_menu_page( __( 'Kadence Blocks -  Gutenberg Page Builder Blocks', 'kadence-blocks' ), __( 'Kadence Blocks', 'kadence-blocks' ), 'edit_pages', 'kadence-blocks', null, $this->get_icon_svg() );
+			$page = add_submenu_page( 'kadence-blocks', __( 'Kadence Blocks -  Gutenberg Page Builder Blocks', 'kadence-blocks' ), __( 'Settings' ), 'edit_pages', 'kadence-blocks', array( $this, 'config_page' ) );
+		}
 		add_action( 'admin_print_styles-' . $page, array( $this, 'scripts' ) );
 	}
 	/**
@@ -302,8 +327,8 @@ class Kadence_Blocks_Settings {
 				),
 			),
 		);
-		wp_enqueue_style( 'kadence-blocks-admin-css', KT_BLOCKS_URL . '/dist/settings/styles.css', array( 'wp-jquery-ui-dialog', 'wp-color-picker' ), KT_BLOCKS_VERSION, 'all' );
-		wp_enqueue_script( 'kadence-blocks-admin-js', KT_BLOCKS_URL . '/dist/settings/scripts.js', array( 'jquery', 'jquery-ui-dialog', 'wp-color-picker' ), KT_BLOCKS_VERSION, true );
+		wp_enqueue_style( 'kadence-blocks-admin-css', KADENCE_BLOCKS_URL . '/dist/settings/styles.css', array( 'wp-jquery-ui-dialog', 'wp-color-picker' ), KADENCE_BLOCKS_VERSION, 'all' );
+		wp_enqueue_script( 'kadence-blocks-admin-js', KADENCE_BLOCKS_URL . '/dist/settings/scripts.js', array( 'jquery', 'jquery-ui-dialog', 'wp-color-picker' ), KADENCE_BLOCKS_VERSION, true );
 		wp_localize_script(
 			'kadence-blocks-admin-js',
 			'kt_blocks_params',
@@ -354,6 +379,28 @@ class Kadence_Blocks_Settings {
 				'default'           => '',
 			)
 		);
+		register_setting(
+			'kadence_blocks_recaptcha_site_key',
+			'kadence_blocks_recaptcha_site_key',
+			array(
+				'type'              => 'string',
+				'description'       => __( 'Google reCaptcha Site Key', 'kadence-blocks' ),
+				'sanitize_callback' => 'sanitize_text_field',
+				'show_in_rest'      => true,
+				'default'           => '',
+			)
+		);
+		register_setting(
+			'kadence_blocks_recaptcha_secret_key',
+			'kadence_blocks_recaptcha_secret_key',
+			array(
+				'type'              => 'string',
+				'description'       => __( 'Google reCaptcha Secret Key', 'kadence-blocks' ),
+				'sanitize_callback' => 'sanitize_text_field',
+				'show_in_rest'      => true,
+				'default'           => '',
+			)
+		);
 	}
 	/**
 	 * Register settings
@@ -369,7 +416,7 @@ class Kadence_Blocks_Settings {
 		// Defaults for Pages and posts.
 		add_settings_field( 'post_default', __( 'Post default', 'kadence-blocks' ), array( $this, 'post_default_callback' ), 'kt_blocks_editor_width_section', 'kt_blocks_editor_width_sec' );
 		add_settings_field( 'page_default', __( 'Page Default', 'kadence-blocks' ), array( $this, 'page_default_callback' ), 'kt_blocks_editor_width_section', 'kt_blocks_editor_width_sec' );
-		add_settings_field( 'limited_margins', __( 'Enable Less Margin CSS', 'kadence-blocks' ), array( $this, 'limited_margins_callback' ), 'kt_blocks_editor_width_section', 'kt_blocks_editor_width_sec' );
+		//add_settings_field( 'limited_margins', __( 'Enable Less Margin CSS', 'kadence-blocks' ), array( $this, 'limited_margins_callback' ), 'kt_blocks_editor_width_section', 'kt_blocks_editor_width_sec' );
 		add_settings_field( 'enable_editor_width', __( 'Enable Editor Width', 'kadence-blocks' ), array( $this, 'enabled_editor_width_callback' ), 'kt_blocks_editor_width_section', 'kt_blocks_editor_width_sec' );
 
 	}
@@ -466,7 +513,7 @@ class Kadence_Blocks_Settings {
 			<div class="kt_plugin_welcome_head_container">
 				<a href="https://www.kadenceblocks.com/" class="kt_plugin_welcome_logo_area">
 					<div class="kt_plugin_welcome_logo">
-						<img src="<?php echo KT_BLOCKS_URL . 'dist/settings/img/kadence-logo.png'; ?>">
+						<img src="<?php echo KADENCE_BLOCKS_URL . 'dist/settings/img/kadence-logo.png'; ?>">
 					</div>
 					<div class="kt_plugin_welcome_logo_title">
 						<h1>
@@ -583,9 +630,9 @@ class Kadence_Blocks_Settings {
 												<svg class="kt-svg-icon kt-svg-icon-presentation"><use xlink:href="#kt-svg-icon-presentation"></use></svg>
 											</div>
 											<div class="kt-content-promo">
-												<h3><?php echo esc_html__( 'Tutorials', 'kadence-blocks' ); ?></h3>
-												<p><?php echo esc_html__( 'Are you not sure how to do something? Check out our tutorials for quick help with many topics.', 'kadence-blocks' ); ?></p>
-												<a href="https://www.kadencethemes.com/gutenberg-tutorials/?utm_source=blocks-settings&utm_medium=dashboard&utm_campaign=kadence-blocks" target="_blank"><?php echo esc_html__( 'View', 'kadence-blocks' ); ?></a>
+												<h3><?php echo esc_html__( 'Changelog Blog', 'kadence-blocks' ); ?></h3>
+												<p><?php echo esc_html__( 'Read through highlights of recent changes made to Kadence Blocks.', 'kadence-blocks' ); ?></p>
+												<a href="https://www.kadenceblocks.com/blog/?utm_source=blocks-settings&utm_medium=dashboard&utm_campaign=kadence-blocks" target="_blank"><?php echo esc_html__( 'View', 'kadence-blocks' ); ?></a>
 											</div>
 										</div>
 									</div>
@@ -595,7 +642,7 @@ class Kadence_Blocks_Settings {
 												<svg class="kt-svg-icon kt-svg-icon-documents"><use xlink:href="#kt-svg-icon-documents"></use></svg>
 											</div>
 											<div class="kt-content-promo">
-												<h3><?php echo esc_html__( 'Plugin Documentation', 'kadence-blocks' ); ?></h3>
+												<h3><?php echo esc_html__( 'Plugin Tutorials & Documentation', 'kadence-blocks' ); ?></h3>
 												<p><?php echo esc_html__( 'Kadence Blocks documentation is set up to help you create amazing content.', 'kadence-blocks' ); ?></p>
 												<?php echo '<a href="https://www.kadenceblocks.com/docs/?utm_source=blocks-settings&utm_medium=dashboard&utm_campaign=kadence-blocks">' . esc_html__( 'Browse Docs', 'kadence-blocks' ) . '</a>'; ?>
 											</div>
@@ -609,9 +656,9 @@ class Kadence_Blocks_Settings {
 												<svg class="kt-svg-icon kt-svg-icon-envelope"><use xlink:href="#kt-svg-icon-envelope"></use></svg>
 											</div>
 											<div class="kt-content-promo">
-												<h3><?php echo esc_html__( 'Kadence Themes Newsletter', 'kadence-blocks' ); ?></h3>
+												<h3><?php echo esc_html__( 'Kadence WP Newsletter', 'kadence-blocks' ); ?></h3>
 												<p><?php echo esc_html__( 'Get the latest news about product updates and new plugins right to your inbox.', 'kadence-blocks' ); ?></p>
-												<a href="https://www.kadencethemes.com/newsletter-subscribe/?utm_source=kadence-blocks&utm_medium=dashboard&utm_campaign=settings" target="_blank"><?php echo esc_html__( 'Subscribe', 'kadence-blocks' ); ?></a>
+												<a href="https://www.kadencewp.com/newsletter-subscribe/?utm_source=kadence-blocks&utm_medium=dashboard&utm_campaign=settings" target="_blank"><?php echo esc_html__( 'Subscribe', 'kadence-blocks' ); ?></a>
 											</div>
 										</div>
 									</div>
@@ -634,67 +681,73 @@ class Kadence_Blocks_Settings {
 				'slug'  => 'kadence/rowlayout',
 				'name'  => __( 'Row Layout', 'kadence-blocks' ),
 				'desc'  => __( 'Create rows with nested blocks either in columns or as a container. Give style to your rows with background, overlay, padding, etc.', 'kadence-blocks' ),
-				'image' => KT_BLOCKS_URL . 'dist/settings/img/rowlayout.jpg',
+				'image' => KADENCE_BLOCKS_URL . 'dist/settings/img/rowlayout.jpg',
 			),
-			'kadence/icon'        => array(
-				'slug'  => 'kadence/icon',
-				'name'  => __( 'Icon', 'kadence-blocks' ),
-				'desc'  => __( 'Choose from over 1500+ SVG Icons to add into your page and style the size, colors, background, border, etc.', 'kadence-blocks' ),
-				'image' => KT_BLOCKS_URL . 'dist/settings/img/icon.jpg',
+			'kadence/form'        => array(
+				'slug'  => 'kadence/form',
+				'name'  => __( 'Form', 'kadence-blocks' ),
+				'desc'  => __( 'Create a contact form or marketing form and style it within the block editor.', 'kadence-blocks' ),
+				'image' => KADENCE_BLOCKS_URL . 'dist/settings/img/form-block.jpg',
 			),
-			'kadence/advnacedgallery' => array(
-				'slug'  => 'kadence/advnacedgallery',
+			'kadence/advancedgallery' => array(
+				'slug'  => 'kadence/advancedgallery',
 				'name'  => __( 'Advanced Gallery', 'kadence-blocks' ),
-				'desc'  => __( 'Photo galleries, carousels, and sliders! Enable custom links, captions, and more. Plus you can select image sizes.', 'kadence-blocks' ),
-				'image' => KT_BLOCKS_URL . 'dist/settings/img/gallery-block.jpg',
+				'desc'  => __( 'Photo galleries, carousels, and sliders! Enable custom links, captions, and more. Plus, you can select image sizes.', 'kadence-blocks' ),
+				'image' => KADENCE_BLOCKS_URL . 'dist/settings/img/gallery-block.jpg',
 			),
 			'kadence/advancedbtn' => array(
 				'slug'  => 'kadence/advancedbtn',
 				'name'  => __( 'Advanced Button', 'kadence-blocks' ),
 				'desc'  => __( 'Create an advanced button or a row of buttons. Style each one including hover controls plus you can use an icon and display them side by side', 'kadence-blocks' ),
-				'image' => KT_BLOCKS_URL . 'dist/settings/img/btn.jpg',
+				'image' => KADENCE_BLOCKS_URL . 'dist/settings/img/btn.jpg',
+			),
+			'kadence/icon'        => array(
+				'slug'  => 'kadence/icon',
+				'name'  => __( 'Icon', 'kadence-blocks' ),
+				'desc'  => __( 'Choose from over 1500+ SVG Icons to add into your page and style the size, colors, background, border, etc.', 'kadence-blocks' ),
+				'image' => KADENCE_BLOCKS_URL . 'dist/settings/img/icon.jpg',
 			),
 			'kadence/spacer'      => array(
 				'slug'  => 'kadence/spacer',
 				'name'  => __( 'Spacer/Divider', 'kadence-blocks' ),
 				'desc'  => __( 'Easily create a divider and determine the space around it or just create some space in your content.', 'kadence-blocks' ),
-				'image' => KT_BLOCKS_URL . 'dist/settings/img/spacer.jpg',
+				'image' => KADENCE_BLOCKS_URL . 'dist/settings/img/spacer.jpg',
 			),
 			'kadence/advancedheading'      => array(
 				'slug'  => 'kadence/advancedheading',
 				'name'  => __( 'Advanced Heading', 'kadence-blocks' ),
 				'desc'  => __( 'Transform your headings to Advanced Headings and customize the font family (even google fonts), color, and size.', 'kadence-blocks' ),
-				'image' => KT_BLOCKS_URL . 'dist/settings/img/heading.jpg',
+				'image' => KADENCE_BLOCKS_URL . 'dist/settings/img/heading.jpg',
 			),
 			'kadence/tabs'      => array(
 				'slug'  => 'kadence/tabs',
 				'name'  => __( 'Tabs', 'kadence-blocks' ),
 				'desc'  => __( 'Create custom vertical or horizontal tabs with advanced styling controls. Each tab content is an empty canvas able to contain any other blocks.', 'kadence-blocks' ),
-				'image' => KT_BLOCKS_URL . 'dist/settings/img/tabs.jpg',
+				'image' => KADENCE_BLOCKS_URL . 'dist/settings/img/tabs.jpg',
 			),
 			'kadence/infobox'      => array(
 				'slug'  => 'kadence/infobox',
 				'name'  => __( 'Info Box', 'kadence-blocks' ),
-				'desc'  => __( 'Create a box link containing an icon or image and optionally a title, description and learn more text. Style static and hover colors even show a box shadow.', 'kadence-blocks' ),
-				'image' => KT_BLOCKS_URL . 'dist/settings/img/infobox.jpg',
+				'desc'  => __( 'Create a box link containing an icon or image and optionally a title, description, and learn more text. Style static and hover colors even show a box-shadow.', 'kadence-blocks' ),
+				'image' => KADENCE_BLOCKS_URL . 'dist/settings/img/infobox.jpg',
 			),
 			'kadence/accordion'      => array(
 				'slug'  => 'kadence/accordion',
 				'name'  => __( 'Accordion', 'kadence-blocks' ),
-				'desc'  => __( 'Create beautiful accordions! Each pane is able to contain any other block, customize title styles, content background and borders.', 'kadence-blocks' ),
-				'image' => KT_BLOCKS_URL . 'dist/settings/img/accordion.jpg',
+				'desc'  => __( 'Create beautiful accordions! Each pane can contain any other block, customize title styles, content background, and borders.', 'kadence-blocks' ),
+				'image' => KADENCE_BLOCKS_URL . 'dist/settings/img/accordion.jpg',
 			),
 			'kadence/iconlist'      => array(
 				'slug'  => 'kadence/iconlist',
 				'name'  => __( 'Icon List', 'kadence-blocks' ),
 				'desc'  => __( 'Add beautiful icons to your lists and make them more engaging. Over 1500 icons to choose from and unlimited styles.', 'kadence-blocks' ),
-				'image' => KT_BLOCKS_URL . 'dist/settings/img/iconlist.jpg',
+				'image' => KADENCE_BLOCKS_URL . 'dist/settings/img/iconlist.jpg',
 			),
 			'kadence/testimonials'      => array(
 				'slug'  => 'kadence/testimonials',
 				'name'  => __( 'Testimonials', 'kadence-blocks' ),
 				'desc'  => __( 'Create confidence in your brand or product by showing off beautiful unique testimonials, add as a carousel or a grid.', 'kadence-blocks' ),
-				'image' => KT_BLOCKS_URL . 'dist/settings/img/testimonials.jpg',
+				'image' => KADENCE_BLOCKS_URL . 'dist/settings/img/testimonials.jpg',
 			),
 		);
 		return apply_filters( 'kadence_blocks_enable_disable_array', $blocks );
@@ -821,11 +874,17 @@ class Kadence_Blocks_Settings {
 	}
 	/**
 	 * Add settings link
+	 */
+	public function settings_link() {
+		return apply_filters( 'kadence-blocks-settings-url', admin_url( 'options-general.php?page=kadence_blocks' ) );
+	}
+	/**
+	 * Add settings link
 	 *
 	 * @param array $links plugin activate/deactivate links array.
 	 */
 	public function add_settings_link( $links ) {
-		$settings_link = '<a href="' . admin_url( 'options-general.php?page=kadence_blocks' ) . '">' . __( 'Settings', 'kadence-blocks' ) . '</a>';
+		$settings_link = '<a href="' . esc_url( $this->settings_link() ) . '">' . __( 'Settings', 'kadence-blocks' ) . '</a>';
 		array_push( $links, $settings_link );
 		return $links;
 	}
