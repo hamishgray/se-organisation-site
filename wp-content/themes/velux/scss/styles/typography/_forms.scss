@@ -90,3 +90,28 @@ legend {
 
 form label {
   font-weight: bold; }
+
+
+
+
+div.wpforms-container-full .wpforms-form input[type=submit],
+div.wpforms-container-full .wpforms-form button[type=submit],
+div.wpforms-container-full .wpforms-form .wpforms-page-button {
+  display: inline-block;
+  border: none;
+  background: $orange;
+  background: linear-gradient(180deg, #ff791a 12.52%, #e66000 87.48%);
+  color: #fff !important;
+  line-height: 1;
+  white-space: nowrap;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 17px 2rem;
+  &:hover {
+    border: none;
+    background: linear-gradient(180deg, #e66000 12.52%, #ff791a 87.48%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+}

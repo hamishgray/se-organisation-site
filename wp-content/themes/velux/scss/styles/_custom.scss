@@ -384,6 +384,9 @@ figure.wp-block-image { margin-left: auto; margin-right: auto; }
     flex-direction: row;
     background-color: $grey-lightest;
     overflow: scroll;
+    @include bp($xxl){
+      overflow: hidden;
+    }
     &-item {
       display: flex;
       align-items: center;
