@@ -1769,7 +1769,7 @@ div.wpforms-container-full .wpforms-form input[type=submit], div.wpforms-contain
 div.wpforms-container-full .wpforms-form input[type=submit]:hover, div.wpforms-container-full .wpforms-form button[type=submit]:hover, div.wpforms-container-full .wpforms-form .wpforms-page-button:hover {
   border: none;
   background: linear-gradient(180deg, #e66000 12.52%, #ff791a 87.48%);
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 /*--------------------------------------------------------------
  # Clearings
@@ -3588,6 +3588,11 @@ figure.wp-block-image {
   flex-direction: row;
   background-color: #f2f5f7;
   overflow: scroll;
+}
+@media (min-width: 970px) {
+  .timeline__nav {
+    overflow: hidden;
+  }
 }
 .timeline__nav-item {
   display: flex;
